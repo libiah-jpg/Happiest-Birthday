@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#260b16">
+<title>A Little World Made for You</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Manrope:wght@300;400;500;600&display=swap');
+:root{--wine:#3b1022;--wine2:#210913;--gold:#e7c98b;--cream:#fff4e5;--muted:#d8c2bd}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 50% 10%,#572039 0,#260b16 48%,#10070d 100%);color:var(--cream);font-family:Manrope,Arial,sans-serif;min-height:100vh;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;background-image:radial-gradient(#e7c98b 1px,transparent 1px);background-size:38px 38px}
+main{width:min(900px,92vw);margin:auto;padding:28px 0 60px;position:relative}
+.top{display:flex;justify-content:space-between;align-items:center;color:var(--gold);font-size:11px;letter-spacing:3px;text-transform:uppercase}
+.progress{height:2px;background:#ffffff20;margin:18px 0 28px;border-radius:5px;overflow:hidden}.bar{height:100%;width:8.33%;background:linear-gradient(90deg,#b98b51,var(--gold));transition:width .5s}
+.page{display:none;min-height:70vh;align-items:center;justify-content:center;text-align:center;flex-direction:column;padding:25px 12px;animation:appear .65s ease}.page.active{display:flex}
+@keyframes appear{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.kicker{color:var(--gold);letter-spacing:4px;text-transform:uppercase;font-size:10px;margin-bottom:16px}
+h1,h2{font-family:"Cormorant Garamond",serif;font-weight:500;line-height:1.02;margin:8px 0 18px}
+h1{font-size:clamp(48px,10vw,86px)}h2{font-size:clamp(38px,7vw,60px)}
+.script{font-family:"Great Vibes",cursive;color:var(--gold);font-size:clamp(34px,7vw,54px)}
+p{font-size:15px;line-height:1.9;color:var(--muted);max-width:650px;margin:8px auto}
+.gold{color:var(--gold)}.divider{width:75px;height:1px;background:var(--gold);margin:22px auto}
+button{border:1px solid var(--gold);background:linear-gradient(135deg,#8d5c46,#4a1c2e);color:#fff5e8;padding:13px 25px;border-radius:30px;letter-spacing:1px;font:500 12px Manrope;cursor:pointer;transition:.25s;margin:8px}
+button:hover{transform:translateY(-2px);box-shadow:0 8px 25px #0005}
+.secondary{background:transparent;color:var(--gold)}
+.portrait{width:min(270px,70vw);height:330px;object-fit:cover;border:1px solid #d7b779;padding:7px;border-radius:150px 150px 18px 18px;box-shadow:0 15px 55px #0008;margin:10px auto 20px}
+.card{max-width:680px;width:100%;padding:30px 24px;border:1px solid #d9b97955;background:#ffffff08;backdrop-filter:blur(8px);border-radius:20px;box-shadow:0 18px 55px #0004}
+.wish{font-family:"Cormorant Garamond",serif;font-size:clamp(24px,5vw,34px);color:#fff0dc;line-height:1.35}
+.letter{font-family:"Great Vibes",cursive;font-size:30px;color:#f0d8ad;line-height:1.45}
+.letterbody{font-family:"Cormorant Garamond",serif;font-size:22px;line-height:1.55;color:#f8e9dc}
+.heart{font-size:30px;display:inline-block;animation:pulse 1.5s infinite}@keyframes pulse{50%{transform:scale(1.18)}}
+.small{font-size:12px;color:#bfa9a5}
+.upload{display:block;margin:16px auto;padding:12px;border:1px dashed #d9b97980;border-radius:12px;max-width:330px;color:#e9d7c7;font-size:12px}
+input[type=file]{max-width:100%;font-size:11px;color:#e9d7c7}
+#kissMsg{min-height:48px;font-family:"Great Vibes",cursive;font-size:36px;color:var(--gold);margin:14px 0}
+footer{text-align:center;color:#a98d8c;font-size:10px;letter-spacing:2px;margin-top:20px}
+@media(max-width:520px){.page{min-height:72vh}.card{padding:25px 17px}.portrait{height:290px}}
+</style>
+</head>
+<body>
+<main>
+ <div class="top"><span>A little world</span><span id="count">01 / 12</span></div>
+ <div class="progress"><div class="bar" id="bar"></div></div>
+
+ <section class="page active">
+  <div class="kicker">A little surprise, made with love</div>
+  <div class="script">For someone special</div>
+  <h1>Happy Birthday</h1>
+  <p class="gold" style="letter-spacing:3px">THIS LITTLE WORLD IS ALL YOURS</p>
+  <div class="divider"></div><p>Oye suno... apka birthday hai! 🥹❤️</p>
+  <button onclick="next()">Open your surprise ✨</button>
+ </section>
+
+ <section class="page">
+  <div class="kicker">Today is your day</div><h2>Aj meri Jannnn ka<br><span class="script">birthday haiiiii!</span></h2>
+  <img class="portrait" src="assets/portrait.jpg" alt="Birthday surprise portrait">
+  <p>I am sooo muchhhhh happyyyyy Jannnnn! ❤️</p>
+  <button onclick="next()">Next, birthday boy ♡</button>
+ </section>
+
+ <section class="page">
+  <div class="kicker">A wish from my heart</div><h2>You deserve<br><span class="gold">all the beautiful things</span></h2>
+  <div class="card"><p class="wish">May your days be full of peace, your heart full of happiness, and your life full of moments that make you grateful.</p><div class="divider"></div><p>May every new year bring you closer to everything your heart quietly wishes for. ❤️</p></div>
+  <button onclick="next()">Next ♡</button>
+ </section>
+
+ <section class="page">
+  <div class="kicker">A little prayer for you</div><h2>My duas for you</h2>
+  <div class="card"><p>May Allah bless you with a long, healthy and peaceful life.</p><p>May Allah protect you from every worry, difficulty and sadness.</p><p>May your rizq be full of barakah, your efforts bring success, and your heart always find sukoon.</p><p class="gold">Ameen summa Ameen. 🤍</p></div>
+  <button onclick="next()">Ameen... next ♡</button>
+ </section>
+
+ <section class="page">
+  <div class="kicker">A reminder</div><h2>Never stop<br><span class="script">believing in yourself</span></h2>
+  <div class="card"><p class="wish">I hope you always see the goodness in yourself that the people who care about you see in you.</p><p>Keep growing, keep smiling, and keep making beautiful memories. You have so many lovely chapters ahead.</p></div>
+  <button onclick="next()">Next, my favourite human ♡</button>
+ </section>
+
+ <section class="page">
+  <div class="kicker">A tiny love note</div><h2>One thing I want you to know</h2>
+  <div class="card"><p class="wish">Your happiness matters. Your dreams matter. And I genuinely pray that life is gentle with you.</p><p>On your birthday and on all the ordinary days after it, may you always have reasons to smile. ❤️</p></div>
+  <button onclick="next()">There's more... ✨</button>
+ </section>
+
+ <section class="page">
+  <div class="kicker">A special page</div><h2>Come here for a...</h2>
+  <div class="heart">💋</div>
+  <p>Tap the button. I have a birthday kiss waiting for you!</p>
+  <button onclick="kiss()">Kiss me 💋</button>
+  <button class="secondary" onclick="moreLove()">More love please ❤️</button>
+  <div id="kissMsg"></div>
+  <button onclick="next()">Next ♡</button>
+ </section>
+
+ <section class="page">
+  <div class="kicker">A voice from me</div><h2>My voice wish</h2>
+  <div class="card"><p>Some wishes are better heard than read. Add your voice note here and press play.</p>
+   <label class="upload">Choose your voice note
+    <input type="file" id="voiceFile" accept="audio/*">
+   </label>
+   <audio id="voicePlayer" controls style="width:100%;display:none"></audio>
+   <p class="small">Your selected audio plays in this browser. For the public website, add your audio file as <b>voice-note.mp3</b> and link it in the page.</p>
+  </div><button onclick="next()">Next ♡</button>
+ </section>
+
+ <section class="page">
+  <div class="kicker">Our little soundtrack</div><h2>A song for you</h2>
+  <div class="card"><p>Every special moment deserves its own soundtrack. Choose the song you want playing on this page.</p>
+   <label class="upload">Choose your song
+    <input type="file" id="songFile" accept="audio/*">
+   </label>
+   <audio id="songPlayer" controls style="width:100%;display:none"></audio>
+   <p class="small">For GitHub Pages, place your chosen audio in the project folder as <b>song.mp3</b>.</p>
+  </div><button onclick="next()">Next ♡</button>
+ </section>
+
+ <section class="page">
+  <div class="kicker">A letter, just for you</div><h2>From my heart</h2>
+  <div class="card">
+   <div class="letter">Mere pyaare...</div>
+   <p class="letterbody">I wish I could put into words how special this day is. I pray that this year brings you endless reasons to smile, beautiful opportunities, and peace in every step. Thank you for being someone whose happiness means so much. May Allah keep you smiling, always. Ameen. ❤️</p>
+   <div class="letter">With lots of duas & love ♡</div>
+  </div>
+  <p class="small">Your handwritten letter photo can be added here when included in the project folder.</p>
+  <button onclick="next()">One more page ♡</button>
+ </section>
+
+ <section class="page">
+  <div class="kicker">Before the final surprise</div><h2>Make a beautiful wish</h2>
+  <div class="card"><p class="wish">Close your eyes for a moment and make a wish for the year ahead.</p><p>May Allah write the very best for you, in ways more beautiful than you can imagine. 🤍</p><div class="heart">✨</div></div>
+  <button onclick="next()">Reveal the last surprise</button>
+ </section>
+
+ <section class="page">
+  <div class="kicker">One last thing...</div><h1 class="script">Happy Birthday, Jannnn!</h1>
+  <div class="card"><p class="wish">I hope you feel celebrated today, tomorrow, and every day. May your smile never fade and may your life always be surrounded by kindness, love and Allah's blessings.</p><div class="divider"></div><p class="gold">So much love, so many duas, and one very big birthday kiss... 💋</p></div>
+  <div class="heart">❤️</div><p>End of surprise — but never the duas.</p>
+  <button onclick="restart()">Replay from the beginning ↺</button>
+ </section>
+ <footer>MADE WITH LOVE · JUST FOR YOU</footer>
+</main>
+<script>
+let current=0;const pages=[...document.querySelectorAll('.page')];
+function show(n){pages[current].classList.remove('active');current=n;pages[current].classList.add('active');document.getElementById('count').textContent=String(current+1).padStart(2,'0')+' / '+pages.length;document.getElementById('bar').style.width=((current+1)/pages.length*100)+'%';window.scrollTo({top:0,behavior:'smooth'});}
+function next(){if(current<pages.length-1)show(current+1)}
+function restart(){show(0)}
+function kiss(){document.getElementById('kissMsg').textContent='UMMMMMMAAAAAAHHHHH 💋';}
+function moreLove(){document.getElementById('kissMsg').textContent='Mwaaaaaahhh! One more, and one more! 💋❤️💋';}
+function bindAudio(inputId,playerId){document.getElementById(inputId).addEventListener('change',e=>{const f=e.target.files[0];if(f){const p=document.getElementById(playerId);p.src=URL.createObjectURL(f);p.style.display='block';p.play().catch(()=>{});}})}
+bindAudio('voiceFile','voicePlayer');bindAudio('songFile','songPlayer');
+</script>
+</body></html>
